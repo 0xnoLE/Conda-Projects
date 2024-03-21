@@ -6,9 +6,18 @@ import os
 from django.conf import settings
 import ffmpeg
 from yt_dlp.utils import DownloadError, PostProcessingError
+import re
 
 def home(request):
     return render(request, 'downloader/home.html')
+
+def sanitize_filename(filename):
+    """
+    Remove any invalid characters from the filename and replace with underscores.
+    """
+    filename = re.sub(r'(?<=\W)\s+(?=\W)', '_', filename)
+    filename = re.sub(r'[\\/*?:"<>|]', '', filename)
+    return filename
 
 def download_video(request):
     if request.method == 'POST':
@@ -46,9 +55,13 @@ def download_video(request):
             )
             video.save()
 
+
+            sanitized_title = sanitize_filename(info['title'])
+
+
             audio_dir = os.path.join(settings.MEDIA_ROOT, 'audios')
             os.makedirs(audio_dir, exist_ok=True)
-            audio_path = os.path.join(audio_dir, f"{info['title']}.m4a")
+            audio_path = os.path.join(audio_dir, f"{sanitized_title}.m4a")
             os.rename(video_path.rsplit('.',1)[0] + '.m4a', audio_path)
 
             return redirect('video_detail', video_id=video.id)
