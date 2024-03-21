@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Video</title>
+</head>
+<body>
+    <h1>Download Video</h1>
+    <form method="post" action="{% url 'download_video' %}">
+        {% csrf_token %}
+        <input type="text" name="url" placeholder="Enter video URL">
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>
