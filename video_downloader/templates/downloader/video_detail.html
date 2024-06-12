@@ -4,7 +4,22 @@
     <title>Video Details</title>
 </head>
 <body>
+    <div>
     <h1>{{ video.title }}</h1>
+    <video width="640" height="360" controls>
+        <source src="{{ video_file }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <audio controls>
+        <source src="{{ audio_file }}" type="audio/mpeg">
+    </audio>
+    <form method="post" action="{%url 'pitch_shift' video.id %}">
+        {% csrf_token %}
+        <label for ="pitch_shift">Pitch Shift (e.g., 1.2 for 20% increase):</label>
+        <input type="number" id="pitch_shift" name="pitch_shift" step="0.1" min="0.5" max="2.0" value="1.0">
+        <button type="submit"> Pitch Shift</button>
+    </form>
+    </div>
     <p>{{ video.description }}</p>
     <p>Duration: {{ video.duration }} seconds</p>
     <p>Published at: {{ video.published_at }}</p>
