@@ -1,11 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset ="UTF-8">
     <title>Video Downloader</title>
+    <link rel ="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="'sidebar">    
     <h1>Welcome to Video Downloader</h1>
     <p>Download videos from YouTube and other supported platforms.</p>
     <a href="{% url 'download_video' %}">Download Video: Get Audio (.m4a)</a>
+    </div>
 </body>
 </html>

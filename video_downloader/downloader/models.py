@@ -8,9 +8,10 @@ class Video(models.Model):
     description = models.TextField(blank=True)
     published_at = models.DateTimeField(blank=True, null=True)
     duration = models.PositiveIntegerField(default=0)
-    video_file = models.FileField(upload_to='videos/', blank=True)
-    audio_file = models.FileField(upload_to='audios/', blank=True)
-    thumbnail = models.ImageField(upload_to='thumnbails/')
+    video_file = models.FileField(upload_to='videos/', null = True, blank=True)
+    audio_file = models.FileField(upload_to='audios/', null = True, blank=True)
+    pitch_shifted_audio_file = models.FileField(upload_to='audios/', blank=True, null=True)
+    thumbnail = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

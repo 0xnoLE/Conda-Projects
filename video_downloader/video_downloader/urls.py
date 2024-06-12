@@ -23,7 +23,9 @@ urlpatterns = [
     path('download/', views.download_video, name='download_video'),
     path('video/<int:video_id>/', views.video_detail, name='video_detail'),
     path('', include('downloader.urls')),
+    path('video/<int:video_id>/pitch_shift/', views.pitch_shift, name='pitch_shift'),
 ]
+
 
 
 

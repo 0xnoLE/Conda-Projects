@@ -1,0 +1,31 @@
+/* style.css */
+body {
+    background-color: #000000;
+    background-image: url('video_downloader\static\Galaxy.gif');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    background-color: #222;
+    padding: 20px;
+    /* Add more styles for the sidebar */
+}
+
+.main-content {
+    padding: 20px;
+    /* Add more styles for the main content area */
+  }
+  
+  h1 {
+    font-size: 32px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Add more styles for headings */
+  }
+  
+  /* Add more CSS styles for other elements */
